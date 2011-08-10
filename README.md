@@ -31,7 +31,7 @@ Add the persister to your Spring configuration:
 
 The database file for your app should be located under `/data/YOUR_APP_NAME/current/config/database.yml'
 
-properties exposted:
+properties exposed:
 
 * ENVIRONMENT.adapter
 * ENVIRONMENT.database
@@ -47,5 +47,5 @@ Use those variables to configure you datasource:
 ```xml
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
       p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://${production.host}:3306/${production.database}"
-                        p:username="${production.username}" p:password="${production.password}"/>
+      p:username="${production.username}" p:password="${production.password}"/>
 ```
