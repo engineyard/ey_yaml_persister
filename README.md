@@ -40,7 +40,7 @@ properties exposed:
 * ENVIRONMENT.host
 * ENVIRONMENT.reconnect
 
-Where ENVIRONMENT is the environment that you chose, for instance `production' or `staging'.
+Where ENVIRONMENT is the environment that you chose, for instance `production` or `staging`.
 
 Use those variables to configure you datasource:
 
