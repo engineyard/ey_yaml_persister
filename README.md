@@ -15,6 +15,8 @@ Add dependency:
 </dependency>
 ```
 
+- Note: This artifact is not in any public repository yet, you can download the source code and install it on your local machine with `mvn install`
+
 # Usage
 
 Add the persister to your Spring configuration:
