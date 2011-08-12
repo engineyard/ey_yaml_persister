@@ -24,9 +24,6 @@ import org.yaml.snakeyaml.resolver.Resolver;
 public class YamlPropertiesPersister implements PropertiesPersister {
     @Override
     public void load(Properties props, InputStream is) throws IOException {
-        System.err.println("LOAD FROM YAML!!!!!!!!!");
-        System.err.println("LOAD FROM YAML!!!!!!!!!");
-        System.err.println("LOAD FROM YAML!!!!!!!!!");
         load(props, new InputStreamReader(is));
     }
 
@@ -41,9 +38,6 @@ public class YamlPropertiesPersister implements PropertiesPersister {
      */
     @Override
     public void load(Properties props, Reader reader) throws IOException {
-        System.err.println("LOAD FROM YAML!!!!!!!!!");
-        System.err.println("LOAD FROM YAML!!!!!!!!!");
-        System.err.println("LOAD FROM YAML!!!!!!!!!");
         Yaml yaml = instanceOfYaml();
         Map<String, Object> map = (Map<String, Object>) yaml.load(reader);
         // now we can populate supplied props
@@ -56,7 +50,6 @@ public class YamlPropertiesPersister implements PropertiesPersister {
      */
     public void assignProperties(Properties props, Map<String, Object> map, String path) {
         for (Entry<String, Object> entry : map.entrySet()) {
-            System.out.println("SETTING PROPERTIES FROM YAML");
             String key = entry.getKey();
             if (StringUtils.isNotEmpty(path))
                 key = path + "." + key;
@@ -64,10 +57,11 @@ public class YamlPropertiesPersister implements PropertiesPersister {
             if (val == null) val = "";
             if (val instanceof String) {
                 // see if we need to create a compound key
-                System.out.println("PROP: " + key + ", VALUE: " + val);
                 props.put(key, val);
             } else if (val instanceof Map) {
                 assignProperties(props, (Map<String, Object>) val, key);
+            } else if (val instanceof Boolean) {
+                props.put(key, val.toString());
             }
         }
     }
